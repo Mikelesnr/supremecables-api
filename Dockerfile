@@ -4,7 +4,7 @@ FROM node:20-slim AS frontend
 WORKDIR /app
 COPY package.json vite.config.js tailwind.config.js postcss.config.cjs ./
 COPY resources resources
-RUN npm install && npm run build
+RUN npm install --save-dev @types/node@20 && npm run build
 
 # Stage 2: Laravel backend
 FROM php:8.2-fpm-alpine AS backend
